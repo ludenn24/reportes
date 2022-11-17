@@ -1,0 +1,826 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+
+    <div id="load">
+    </div>
+
+
+    <div id="wrapper-content">
+        <div id="page-wrapper">
+            <div class="main-content">
+                <div class="content">
+
+
+                    <div class="section section-padding choose-course">
+                        <div class="container">
+
+                            <div class="section teacher-course">
+                                <div class="container teacher-course-wrapper">
+                                    <div class="course-table">
+                                        <table id="example"
+                                               class="mayus display compact table table-striped table-bordered dt-responsive ">
+                                            <thead>
+                                            <tr class="heading-table">
+                                                <th>NOMBRE</th>
+                                                <th>DISTRITO</th>
+                                                <th>FECHA DE REGISTRO</th>
+                                                <th>ESTADO</th>
+                                                <th>EDITAR</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for ollas in OllasController.ollas %}
+                                                <tr>
+                                                    <td>
+                                                        {{ ollas.or9 }}
+                                                    </td>
+                                                    <td>{{ ollas.nomdis }}</td>
+                                                    <td>
+                                                        {% if ollas.estado == 1 %}
+                                                            <span class='label label-info'>Nuevo</span>
+                                                        {% elseif ollas.estado == 2%}
+                                                            <span class='label label-success'>Activado</span>
+                                                        {% elseif ollas.estado == 3%}
+                                                            <span class='label label-warning'>Desactivado</span>
+                                                        {% else %}
+                                                            <span class='label label-danger'>Eliminado</span>
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>{{ ollas.created_at }}</td>
+                                                    <td>
+                                                        <a class="btn-default"
+                                                           data-target="#EditarOlla"
+                                                           id="modalEditar"
+                                                           data-toggle="modal"
+                                                           data-codigo="{{ ollas.id }}">
+                                                            <i class="fa fa-eye"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                
+                                            {% endfor %}
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="EditarOlla" name="modalEditar" tabindex="-1" role="dialog"
+         aria-labelledby="EditarOlla">
+        <div class="modal-dialog modal-info fade in modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                                                                                                      style="color:#fff;">&times;</span>
+                    </button>
+                    <h4 class="modal-title modtitle"><strong> DATOS DE LA ORGANIZACIÓN </strong></h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="contact-main-wrapper">
+                        <form class="bg-w-form contact-form" method="post" autccomplete="off"
+                              id="FormActualizarOlla">
+                            <div class="row">
+
+                                <input value="" id="id" name="id" type="hidden">
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label ">NOMBRE DE CONTACTO</label>
+                                    <input type="text" placeholder="" id="or1" name="or1"
+                                           class="form-control form-input obligate"
+                                           data-content="Usted debe ingresar el nombre del contacto." value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">APELLIDOS DE PERSONA DE CONTACTO<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" placeholder="Ingrese el nombre de la organización" id="or2"
+                                           name="or2"
+                                           data-content="Usted debe ingresar el nombre de la organización"
+                                           class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">CARGO EN LA ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or3" name="or3" class="form-control form-input obligate" value="">
+                                </div>
+
+                                   <div class="col-md-6">
+                                    <label class="control-label form-label">CELULAR DE CONTACTO<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or4" name="or4" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">CORREO PERSONAL<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or5" name="or5" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">DNI/CARNÉ DE EXTRANJERÍA<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or6" name="or6" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">FECHA DE NACIMIENTO<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or7" name="or7" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">DISTRITO DE RESIDENCIA<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or8" name="or8" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                <div class="col-md-12">
+                                <hr>
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">NOMBRE COMPLETO DE ORGANIZACIÓN <span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or9" name="or9" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">ACRÓNIMO DE ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or10" name="or10 " class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">DESCRIPCIÓN DE LA ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or11" name="oR11" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">TIPO DE ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or12" name="or12" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">LÍNEAS TEMÁTICAS DE ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or13" name="or13" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">DISTRITO O DISTRITOS DE INCIDENCIA<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or14" name="or14" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">NIVEL DE INCIDENCIA<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or15" name="or15" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">FECHA DE CONFORMACIÓN DE LA ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or16" name="or16" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">NÚMERO DE CONTACTO DE LA ORGANIZACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or17" name="or17" class="form-control form-input obligate" value="">
+                                </div>
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">LINK DE RED SOCIAL PARA UBICACIÓN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or18" name="or18" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">CORREO INSTITUCIONAL<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or19" name="or19" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">TIPO DE ACTIVIDADES FRECUENTES<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or20" name="or20" class="form-control form-input obligate" value="">
+                                </div>
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">PÚBLICOS CON LOS QUE TRABAJAN<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or21" name="or12" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                 <div class="col-md-6">
+                                    <label class="control-label form-label">¿CUÁL FUE LA ÚLTIMA ACTIVIDAD QUE REALIZARON? <span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or22" name="or22" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">RECONOCIMIENTO INSTITUCIONAL <span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or23" name="or23" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">Reconocimiento instutucional
+                                    </label>
+                                    <p>RUOS <a id="ruos" href="" target="_blank">Ver documento</a></p>
+                                    <p>SENAJU <a id="senaju" href="" target="_blank">Ver documento</a></p>
+                                    <p>SUNARP <a id="sunarp" href="" target="_blank">Ver documento</a></p>
+                                    <p>R.U. <a id="ru" href="" target="_blank">Ver documento</a></p>
+                                    <p>OTROS <a id="otros" href="" target="_blank">Ver documento</a></p>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">LOGO DE ORGANIZACIÓN JUVENIL <span
+                                                class="highlight">*</span></label>
+                                     <img src="" class="img-responsive pad" id="or24" name="or24">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">TIPO DE LUGAR DONDE SE REÚNEN REGULARMENTE COMO ORGANIZACIÓN <span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or35" name="or35" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">UBICACIÓN DE ORGANIZACIÓN JUVENI<span
+                                                class="highlight">*</span></label>
+                                    <input type="text" id="or34" name="or34" class="form-control form-input obligate" value="">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">ESTADO<span
+                                                class="highlight">*</span>
+                                    </label>
+                                    <select class="form-control form-select obligate" id="estado" value=""
+                                            name="estado"
+                                            data-content="Usted debe seleccionar el estado.">
+                                        <option value="1">Nuevo</option>
+                                        <option value="2">Activado</option>
+                                        <option value="3">Desactivado</option>
+                                        <option value="4">Eliminado</option>
+                                    </select>
+                                </div>
+                                
+                                  <div class="col-md-6">
+                                    <label class="control-label form-label">SITUACIÓN<span
+                                                class="highlight">*</span>
+                                    </label>
+                                    <select class="form-control form-select obligate" id="or33" value=""
+                                            name="or33"
+                                            data-content="Usted debe seleccionar el estado.">
+                                        <option value="">Seleccione una opción</option>
+                                        <option value="con registro">con registro</option>
+                                        <option value="no registrada">no registrada</option>
+                                    </select>
+                                </div>
+                                
+                          
+
+                                <div class="col-md-12" style="height: 400px;">
+                                    <label class="control-label form-label">GEOLOCALIZACIÓN <span
+                                                class="highlight">*</span>
+                                    </label>
+                                    <div id="map2"></div>
+                                </div>
+
+                                <input id="longitud_editar" class="obligate" name="longitud_editar" type="hidden"
+                                       data-content="Usted debe ubicar el comedor en el mapa."/>
+                                <input id="latitud_editar" class="obligate" name="latitud_editar" type="hidden"
+                                       data-content="Usted debe ubicar el comedor en el mapa."/>
+
+                            </div>
+                            
+                            <div class="col-md-12">
+                                
+                                    <label class="control-label form-label">Miembros
+                                    </label>             
+                                    <div class="box">
+                                        <div class="box-body">
+                               
+                                            <table id="team"  class="table table-bordered table-hover" width="100%">
+                                                <thead>
+                                                    <tr class="heading-table">
+                                                        <th>Nombre</th>
+                                                        <th>Edad</th>
+                                                        <th>Distrito</th>
+                                                        <th>Nivel</th>
+                                                        <th>Ocupación</th>
+                                                        <th>Seguro</th>  
+                                                        <th>Sexo</th> 
+                                                        <th>Identificación</th> 
+                                                    </tr>
+                                                </thead>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            
+
+                            <div class="msg"></div>
+
+                            <div class="contact-submit">
+                                <button type="button" id="ActualizarOlla" class="btn btn-success">
+                                  <span>
+                                    ACTUALIZAR INFORMACIÓN
+                                  </span>
+                                </button>
+                            </div>
+
+                            {{ csrf.field | raw }}
+                            
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+                            
+    <div class="modal fade" id="myModalInformation" tabindex="-1" role="dialog" aria-labelledby="myModalInformation">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header mod">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true" style="color:#fff;">&times;</span></button>
+                    <h4 class="modal-title modtitle" id="myModalInformation">[ INFORMACIÓN ] </h4>
+                </div>
+                <div class="modal-body">
+                    cargando contenido...espere un momento por favor
+                </div>
+                <div class="msg"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var base_url = window.location.origin;
+        var d = new Date();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var output = (day < 10 ? '0' : '') + day + '-' + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
+
+        $("#periodo").val(output);
+
+
+        !function (a) {
+            "use strict";
+
+            a(function () {
+                var b = a(window),
+                    c = a(document.body),
+                    mensaje = '',
+                    tipo = '',
+                    codigo = '';
+
+
+                a("#ModalSolNuevo").on("show.bs.modal", function (b) {
+                    var c = a(b.relatedTarget),
+                        cod_org = c.data("codigo"),
+                        nombre = c.data("nombre"),
+                        mensaje = c.data("mensaje"),
+                        tipo = c.data("tipo"),
+                        e = a(this);
+                    document.getElementById("cod_org_sol").value = cod_org;
+                    document.getElementById("tipo_solicitud").value = tipo;
+                    e.find(".modal-title").text(nombre);
+                    e.find(".proceso").text(mensaje);
+                    if (tipo == 1) {
+                        $('#actualizacion').hide();
+                        $('#tipo_mod').last().removeClass("obligate4");
+                    } else {
+
+                        $('#actualizacion').show();
+                        $('#tipo_mod').last().addClass("obligate4");
+
+                    }
+
+
+                });
+
+                a("#EditarOlla").on("show.bs.modal", function (b) {
+
+                    var c = a(b.relatedTarget),
+                        codigo = c.data("codigo"),
+                        e = a(this);
+
+                    e.find(".modal-title").text("HISTORIAL");
+
+                    return $.ajax({
+                        type: "get",
+                        url: '{{ base_url() }}/editar',
+                        data: {
+                            codigo: codigo
+                        },
+                        beforeSend: function () {
+                            e.find(".modal-title").text("DATOS DE LA ORGANIZACIÓN");
+                        },
+                        success: function (data) {
+                            $.each(data, function (i, item) {
+                                $('#id').val(item.id),
+                                $('#or1').val(item.or1);
+                                $('#or2').val(item.or2);
+                                $('#or3').val(item.or4);
+                                $('#or4').val(item.or4);
+                                $('#or5').val(item.or5);
+                                $('#or6').val(item.or6);
+                                $('#or7').val(item.or7);
+                                $('#or8').val(item.nomdis);
+                                $('#or9').val(item.or9);
+                                $('#or10').val(item.or10);
+                                $('#or11').val(item.or11);
+                                $('#or12').val(item.or12);
+                                $('#or13').val(item.or13);
+                                $('#or14').val(item.or14);
+                                $('#or15').val(item.or15);
+                                $('#or16').val(item.or16);
+                                $('#or17').val(item.or17);
+                                $('#or18').val(item.or18);
+                                $('#or19').val(item.or19);
+                                $('#or20').val(item.or20);
+                                $('#or21').val(item.or21);
+                                $('#or22').val(item.or22);
+                                $('#or23').val(item.or23);
+                                $('#or24').attr('src', '{{base_url()}}/' + item.or24);
+                                $('#or25').val(item.or25);
+                                $('#or26').val(item.or26);
+                                
+                                $('#or33').val(item.or33);
+                                $('#or34').val(item.or34);
+                                $('#or35').val(item.or35);
+                                $('#zona').val(item.zona);
+                                $('#aahh').val(item.aahh);
+                                $('#estado').val(item.estado);
+                                $('#latitud_editar').val(item.or26);
+                                $('#longitud_editar').val(item.or25);
+                                $("#ruos").attr("href", item.or27);
+                                $("#senaju").attr("href", item.or28);
+                                $("#sunarp").attr("href", item.or29);
+                                $("#ru").attr("href", item.or30);
+                                $("#otros").attr("href", item.or31);
+                                coords = {
+                                    lng2: item.or25,
+                                    lat2: item.or26,
+                                };
+                                editMapa(coords);
+                                ListaTeam(codigo);
+                                
+                                
+                                
+                            });
+                        },
+                        error: function () {
+                        }
+                    });
+
+                });
+
+    
+
+                    a("#ActualizarOlla").on("click", function () {
+                        var b = a(this), dataString;
+                        var holder = '';
+                        var exito = true;
+                        $(".obligate").each(function () {
+                            if ($(this).val() == '') {
+                                $(this).focus();
+                                holder = $(this).attr("data-content");
+                                exito = false;
+                                $(".msg").html("").show();
+                                $(".msg").html("<div class='alert alert-danger'><i class='fa fa-exclamation-triangle'></i> " + holder + "</div>");
+                                setTimeout(function () {
+                                    $(".msg").fadeOut(1500);
+                                }, 1500);
+                                return false;
+                            }
+                        });
+                        if (!exito)
+                            return false;
+
+
+                        dataString = $('#FormActualizarOlla').serialize();
+                        $.ajax({
+                            type: "POST",
+                            url: "{{ base_url() }}/actualizar",
+                            data: dataString,
+                            dataType: 'json',
+                            beforeSend: function () {
+                                b.button("loading");
+                            },
+                            success: function (data) {
+                                if (data.response == 'si') {
+                                    $(".msg").html("").show();
+                                    $(".msg").html(data.message);
+                                    b.button("reset");
+                                    setTimeout(function () {
+                                        $(".msg").fadeOut(1500);
+                                    }, 1500);
+                                } else {
+                                    var position = data.indexOf('?');
+                                    var number = data.substr(0, position).replace(/\s+/g, '');
+                                    if (number > 0) {
+                                        b.button("reset");
+                                        $('#EditarOlla').modal('hide')
+                                        $('#myModalInformation').find(".modal-body").html("<center>" + data.substr(position + 1, data.length) + "</center>");
+                                        $('#myModalInformation').modal('show');
+                                        setTimeout(function () {
+                                            window.location.href = window.location;
+                                        }, 1500);
+                                    } else {
+                                        $(".msg").html("").show();
+                                        $(".msg").html(data.message);
+                                        setTimeout(function () {
+                                            $(".msg").fadeOut(1500);
+                                        }, 1000);
+                                        b.button("reset");
+                                    }
+                                }
+
+
+                            },
+                            error: function () {
+                                console.log("It failed");
+                            }
+                        })
+                    });
+
+     
+
+ 
+        })}
+
+        (jQuery), function () {
+            "use strict";
+            $('#fono').keyup(function () {
+                this.value = (this.value + '').replace(/[^0-9]/g, '');
+            });
+
+        }();
+
+        $(document).ready(function () {
+            $('#example').DataTable({
+                pageLength: 10,
+
+                "buttons": [
+                    'copy', 'csv', 'excel', 'pdf'
+                ],
+
+                "language": {
+                    "lengthMenu": "Ver _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Viendo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No se encontraron organizaciones",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                },
+
+                "order": [[0, "desc"]],
+
+                columnDefs: [{
+                    targets: [0, 1],
+                    orderData: [0, 1],
+                    orderSequence: ["desc"],
+                },
+                    {
+                        className: 'text-center',
+                        targets: [2,3],
+                    }
+                ]
+            });
+
+        });
+
+
+        initMap();
+
+        var marker;
+        var coords = {};
+
+        function initMap() {
+            coords = {
+                lng: -77.03146290121919,
+                lat: -12.045291343726586,
+                lng2: -77.03146290121919,
+                lat2: -12.045291343726586,
+            };
+            setMapa(coords);
+        }
+
+        function setMapa(coords) {
+
+            var map = new google.maps.Map(document.getElementById('map'),
+                {
+                    zoom: 17,
+                    center: new google.maps.LatLng(coords.lat, coords.lng),
+                });
+
+
+            var src = "http://ruoslima.com/public/mapas/limites.kmz";
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map
+            });
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat, coords.lng),
+            });
+
+            //--------------------------------------------------------------
+            var map2 = new google.maps.Map(document.getElementById('map2'),
+                {
+                    zoom: 14,
+                    center: new google.maps.LatLng(coords.lat2, coords.lng2),
+                    styles: [{
+                        elementType: 'labels.icon',
+                        stylers: [{visibility: 'off'}]
+                    }]
+                });
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map2
+            });
+
+            marker2 = new google.maps.Marker({
+                map: map2,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat2, coords.lng2),
+            });
+            //--------------------------------------------------------------
+
+            marker.addListener('click', toggleBounce);
+            marker2.addListener('click', toggleBounce);
+
+            marker.addListener('dragend', function (event) {
+                $('#longitud').val(this.getPosition().lng());
+                $('#latitud').val(this.getPosition().lat());
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+            marker2.addListener('dragend', function (event) {
+                $('#longitud').val(this.getPosition().lng());
+                $('#latitud').val(this.getPosition().lat());
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+
+        }
+
+
+        function editMapa(coords) {
+
+            var src = "http://ruoslima.com/public/mapas/limites.kmz";
+
+            //--------------------------------------------------------------
+            var map2 = new google.maps.Map(document.getElementById('map2'),
+                {
+                    zoom: 13,
+                    center: new google.maps.LatLng(coords.lat2, coords.lng2),
+                    styles: [{
+                        elementType: 'labels.icon',
+                        stylers: [{visibility: 'off'}]
+                    }]
+                });
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map2
+            });
+
+            marker2 = new google.maps.Marker({
+                map: map2,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat2, coords.lng2),
+            });
+            //--------------------------------------------------------------
+
+            marker2.addListener('click', toggleBounce);
+
+            marker2.addListener('dragend', function (event) {
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+
+
+            if (marker2.getAnimation() !== null) {
+                marker2.setAnimation(null);
+            } else {
+                marker2.setAnimation(google.maps.Animation.BOUNCE);
+            }
+
+
+        }
+
+        $(document).on('show.bs.modal', '.modal', function (event) {
+            var zIndex = 1040 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+            setTimeout(function () {
+                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+            }, 0);
+        });
+
+        function ListaTeam(cod) {
+                    responsive: true
+                    var dt = $('#team').DataTable({
+                        destroy: true,
+
+                        "language": {
+                            "lengthMenu": "Ver _MENU_ registros por página",
+                            "zeroRecords": "No se encontraron resultados",
+                            "info": "Viendo página _PAGE_ de _PAGES_",
+                            "infoEmpty": "No se encontraron registros",
+                            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "search": "Buscar:",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Último",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            },
+                        },
+
+                        "ajax": {
+                            "type": "get",
+                            "url": "{{ base_url() }}/team/editar",
+                            "data": {
+                                codigo: cod
+                            }
+                        },
+
+                        "columns": [
+                            {"data": "nombre" },
+                            {"data": "edad" },
+                            {"data": "nomdis" },
+                            {"data": "nivel" },
+                            {"data": "ocupacion" },
+                            {"data": "seguro" },
+                            {"data": "sexo" },
+                            {"data": "indetificacion" },
+                                                        
+                        ],
+
+                        columnDefs: [
+                            {
+                                className: 'text-center',
+                                targets: [0, 2],
+                            },
+                        ]
+                    });
+
+                }
+                
+    </script>
+
+{% endblock content %}

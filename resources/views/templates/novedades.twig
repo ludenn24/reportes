@@ -1,0 +1,51 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+
+    <div id="load">
+    </div>
+
+
+    <div id="wrapper-content">
+        <div id="page-wrapper">
+            <div class="main-content">
+                <div class="content">
+
+                <div class="section banner  background-opacity page-title set-height-top">
+                    <div class="container">
+                        <div class="page-title-wrapper"><h2 class="captions">Novedades</h2>
+                            <ol class="breadcrumb">
+                                <li><a href="{{ base_url()}}">Inicio</a></li>
+                                <li class="active"><a href="#">Novedades</a></li>
+                            </ol>
+                        </div>  
+                    </div>
+                </div>  
+
+                    <div class="section section-padding news-page">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                             
+                                    {% for lista in NovedadesController.listanovedades %}  
+                                    <div class="col-sm-6">
+                                               <iframe src="https://www.facebook.com/plugins/post.php?href={{ lista.frame | raw }}&show_text=true&appId=443805972655468&height=485" 
+                                                       width="100%" height="650" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
+                                                       allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+                                               </iframe>
+                                    </div>
+                                     {% endfor %}  
+                                
+
+                            </div>
+              
+                        </div>
+                    </div>
+                </div>
+                                
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

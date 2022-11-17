@@ -1,0 +1,55 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+
+    <div id="load">
+    </div>
+
+
+    <div id="wrapper-content">
+        <div id="page-wrapper">
+            <div class="main-content">
+                <div class="content">
+
+                    <div class="section banner  background-opacity page-title set-height-top">
+                        <div class="container">
+                            <div class="page-title-wrapper"><h2 class="captions">Nuevas organizaciones</h2>
+                                <ol class="breadcrumb">
+                                    <li><a href="{{ base_url()}}">Inicio</a></li>
+                                    <li class="active"><a href="{{ base_url()}}/nuevas-organizaciones">Nuevas organizaciones</a></li>
+                                </ol>
+                            </div>  
+                        </div>
+                    </div>
+
+                    <div class="section section-padding events-grid">
+                        <div class="container">
+      
+                            <div class="news-page-wrapper">
+                                <div class="row">
+                                    {% for lista in EntradaController.listaNuevas %}                              
+                                    <div class="col-md-6 col-sm-">
+                                        <div class="edugate-layout-3 news-gird">
+                                            <div class="edugate-layout-3-wrapper">
+                                                
+                                                <a href="#" class="edugate-image">
+                                                    <img src="{{ base_url() }}/{{ lista.foto }}" alt="" class="img-responsive">
+                                                </a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                                {% endfor %}  
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

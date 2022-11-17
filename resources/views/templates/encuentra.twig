@@ -1,0 +1,781 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+
+    <div id="load">
+    </div>
+
+
+    <div id="wrapper-content">
+        <div id="page-wrapper">
+            <div class="main-content">
+                <div class="content">
+
+                    <div class="section banner" id="fondo">
+                        <div class="container" >
+                            <div class="edu-feature-wrapper" >
+                                <div class="row">
+                                    <div class="col-md-12"><img src="{{ base_url() }}/images/org2.png" class="computer-image" alt=""/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section">
+                        <div class="search-input">
+                            <div class="container">
+                                <div class="search-input-wrapper">
+                                    <form>
+
+                                        <div class="col-sm-4">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Nombre de organización juvenil</h5>
+                                            <input type="text" class="form-control obj_nombre" id=obj_nombre" value="" name="obj_nombre">
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Tipo de organización</h5>
+                                            <select class="form-control obj_tipo" id="obj_tipo" name="obj_tipo">
+                                                <option value=""> Todos</option>
+                                                <option value="Colectivo o agrupación juvenil"> Colectivo o agrupación juvenil</option>
+                                                <option value="Espacios institucionales de participación juvenil"> Espacios institucionales de participación juvenil</option>
+                                                <option value="Federación de estudiantes, centro federado o centro de estudiantes"> Federación de estudiantes, centro federado o centro de estudiantes</option>
+                                                <option value="Organización juvenil estudiantil de educación superior"> Organización juvenil estudiantil de educación superior</option>
+                                                <option value="Organización juvenil estudiantil de educación básica"> Organización juvenil estudiantil de educación básica</option>
+                                                <option value="Organización juvenil social de base"> Organización juvenil social de base</option>
+                                                <option value="Organización juvenil tipo red, conformada por nodos y/o secciones"> Organización juvenil tipo red, conformada por nodos y/o secciones</option>
+                                                <option value="Sección juvenil de asociación civil, gremial u organización social"> Sección juvenil de asociación civil, gremial u organización social</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Nivel de Incidencia</h5>
+                                            <select class="form-control obj_incidencia" id="obj_incidencia" name="obj_incidencia">
+                                                <option value="">Todos</option>
+                                                <option value="Zonal">Zonal</option>
+                                                <option value="Distrital">Distrital</option>
+                                                <option value="Mancomunidad">Mancomunidad</option>
+                                                <option value="Metropolitano">Metropolitano</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-3">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Distritos de incidencia</h5>
+                                            <select class="form-control obj_distrito" id="obj_distrito"
+                                                    name="obj_distrito">
+                                                <option value="">Todos</option>
+                                                <option value="CERCADO DE LIMA">CERCADO DE LIMA</option>
+                                                <option value="ANCON">ANCON</option>
+                                                <option value="ATE">ATE</option>
+                                                <option value="BARRANCO">BARRANCO</option>
+                                                <option value="BREÑA">BREÑA</option>
+                                                <option value="CARABAYLLO">CARABAYLLO</option>
+                                                <option value="CHACLACAYO">CHACLACAYO</option>
+                                                <option value="CHORRILLOS">CHORRILLOS</option>
+                                                <option value="CIENEGUILLA">CIENEGUILLA</option>
+                                                <option value="COMAS">COMAS</option>
+                                                <option value="EL AGUSTINO">EL AGUSTINO</option>
+                                                <option value="INDEPENDENCIA">INDEPENDENCIA</option>
+                                                <option value="JESUS MARIA">JESUS MARIA</option>
+                                                <option value="LA MOLINA">LA MOLINA</option>
+                                                <option value="LA VICTORIA">LA VICTORIA</option>
+                                                <option value="LINCE">LINCE</option>
+                                                <option value="LOS OLIVOS">LOS OLIVOS</option>
+                                                <option value="LURIGANCHO">LURIGANCHO</option>
+                                                <option value="LURIN">LURIN</option>
+                                                <option value="MAGDALENA DEL MAR">MAGDALENA DEL MAR</option>
+                                                <option value="MAGDALENA VIEJA">MAGDALENA VIEJA</option>
+                                                <option value="MIRAFLORES">MIRAFLORES</option>
+                                                <option value="PACHACAMAC">PACHACAMAC</option>
+                                                <option value="PUCUSANA">PUCUSANA</option>
+                                                <option value="PUENTE PIEDRA">PUENTE PIEDRA</option>
+                                                <option value="PUNTA HERMOSA">PUNTA HERMOSA</option>
+                                                <option value="PUNTA NEGRA">PUNTA NEGRA</option>
+                                                <option value="RIMAC">RIMAC</option>
+                                                <option value="SAN BARTOLO">SAN BARTOLO</option>
+                                                <option value="SAN BORJA">SAN BORJA</option>
+                                                <option value="SAN ISIDRO">SAN ISIDRO</option>
+                                                <option value="SAN JUAN DE LURIGANCHO">SAN JUAN DE LURIGANCHO</option>
+                                                <option value="SAN JUAN DE MIRAFLORES">SAN JUAN DE MIRAFLORES</option>
+                                                <option value="SAN LUIS">SAN LUIS</option>
+                                                <option value="SAN MARTIN DE PORRES">SAN MARTIN DE PORRES</option>
+                                                <option value="SAN MIGUEL">SAN MIGUEL</option>
+                                                <option value="SANTA ANITA">SANTA ANITA</option>
+                                                <option value="SANTA MARIA DEL MAR">SANTA MARIA DEL MAR</option>
+                                                <option value="SANTA ROSA">SANTA ROSA</option>
+                                                <option value="SANTIAGO DE SURCO">SANTIAGO DE SURCO</option>
+                                                <option value="SURQUILLO">SURQUILLO</option>
+                                                <option value="VILLA EL SALVADOR">VILLA EL SALVADOR</option>
+                                                <option value="VILLA MARIA DEL TRIUNFO">VILLA MARIA DEL TRIUNFO</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Mancomunidad </h5>
+                                            <select class="form-control obj_manco" id="obj_manco" name="obj_manco">
+                                                <option value="">Todos</option>
+                                                <option value="Lima Norte">Lima Norte</option>
+                                                <option value="Lima Centro">Lima Centro</option>
+                                                <option value="Lima Sur">Lima Sur</option>
+                                                <option value="Lima Este">Lima Este</option>
+                                            </select>
+                                        </div>
+
+
+
+
+                                        <div class="col-sm-3">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Líneas temáticas </h5>
+                                            <select class="form-control obj_linea" id="obj_linea" name="obj_linea">
+                                                <option value="">Todos</option>
+                                                <option value="Medio Ambiente y recursos naturales">Medio Ambiente y recursos naturales</option>
+                                                <option value="Ética, integridad y lucha anticorrupción">Ética, integridad y lucha anticorrupción</option>
+                                                <option value="Igualdad de género">Igualdad de género</option>
+                                                <option value="Derechos sexuales y reproductivos">Derechos sexuales y reproductivos</option>
+                                                <option value="Cultura y arte">Cultura y arte</option>
+                                                <option value="Deporte">Deporte</option>
+                                                <option value="Ámbito de la educación">Ámbito de la educación</option>
+                                                <option value="Ámbito de la salud (física y/o mental)">Ámbito de la salud (física y/o mental)</option>
+                                                <option value="Democracia y derechos humanos">Democracia y derechos humanos</option>
+                                                <option value="Proyectos tecnológicos y usos de TICS">Proyectos tecnológicos y usos de TICS</option>
+                                                <option value="Promoción de videojuego en red">Promoción de videojuego en red</option>
+                                                <option value="Investigación científica">Investigación científica</option>
+                                                <option value="Emprendimiento e innovación tecnológica">Emprendimiento e innovación tecnológica</option>
+                                                <option value="Empleabilidad">Empleabilidad</option>
+                                                <option value="Desarrollo económico">Desarrollo económico</option>
+                                                <option value="Comunicación social">Comunicación social</option>
+                                                <option value="Participación ciudadana y política">Participación ciudadana y política</option>
+                                                <option value="Cultura de paz y prevención de violencia">Cultura de paz y prevención de violencia</option>
+                                                <option value="Defensa y/o protección de los animales">Defensa y/o protección de los animales</option>
+                                                <option value="Derechos de las niñas, niños y adolescentes">Derechos de las niñas, niños y adolescentes</option>
+                                                <option value="Derechos de lesbianas, gays, trans, bisexuales e intersexuales">Derechos de lesbianas, gays, trans, bisexuales e intersexuale</option>
+                                                <option value="Derechos de los pueblos indígenas u originarios">Derechos de los pueblos indígenas u originarios</option>
+                                                <option value="Derechos de las personas afrodescendientes">Derechos de las personas afrodescendientes</option>
+                                                <option value="Derechos de las personas con discapacidad">Derechos de las personas con discapacidad</option>
+                                                <option value="Derechos estudiantiles de nivel primario y/o secundario">Derechos estudiantiles de nivel primario y/o secundario</option>
+                                                <option value="Derechos estudiantiles de nivel superior (tecnológico o universitario)">Derechos estudiantiles de nivel superior (tecnológico o universitario)</option>
+                                                <option value="Turismo">Turismo</option>
+                                                <option value="Objetivos de Desarrollo Sostenible">Objetivos de Desarrollo Sostenible</option>
+                                                <option value="Otros">Otros</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <h5 style="font-weight: bold; color: #000000; text-transform: uppercase;">
+                                                Público objetivo</h5>
+                                            <select class="form-control obj_publico" id="obj_publico" name="obj_publico">
+                                                <option value="">Todos</option>
+                                                <option value="Público en general">Público en general</option>
+                                                <option value="Niñas, niños y adolescentes">Niñas, niños y adolescentes</option>
+                                                <option value="Jóvenes ">Jóvenes</option>
+                                                <option value="Adultos">Adultos</option>
+                                                <option value="Adultos mayores">Adultos mayores</option>
+                                                <option value="Animales">Animales</option>
+                                                <option value="Otros">Otros</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <h5 style="color: #ebebeb;"> __</h5>
+                                            <div type="submit" class="form-submit btn btn-transition-2 searchRes"
+                                                 style="width:100%; padding: inherit;">
+                                                <span>Buscar <i class="fa fa-search"></i></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="clearfix"></div>
+                                    </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="section teacher-course">
+                        <div class="container">
+                            <div class="teacher-course-wrappe table-responsive">
+                                
+                                 <div class="latest-news">   
+                                <button onclick="location.href='{{ base_url() }}/exportgeneral'" class="btn btn-green btn-latest-new"><span>EXPORTAR ORGANIZACIONES <i class="fa fa-download"></i></span></button>
+                                </div>
+                                
+                                <table id="Organizaciones"
+                                       class="display compact table table-striped table-bordered dt-responsive mayus">
+                                      
+                                    
+                                      
+                                    <thead>
+                                        <tr class="heading-table">
+                                            <th class="col-md-1"></th>
+                                            <th class="col-md-1">Nombre de organización</th>
+                                            <th class="col-md-1">descripción de organización</th>
+                                            <th class="col-md-1">tipo de organización</th>
+                                            <th class="col-md-1">líneas temáticas</th>
+                                            <th class="col-md-1">nivel de incidencia</th>
+                                            <th class="col-md-1">link de red social</th>
+                                        </tr>
+                                    </thead>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="EditarOlla" name="modalEditar" tabindex="-1" role="dialog"
+         aria-labelledby="EditarOlla">
+        <div class="modal-dialog modal-info fade in modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"
+                                                                                                      style="color:#fff;">&times;</span>
+                    </button>
+                    <h4 class="modal-title modtitle"><strong> DATOS DE LA OLLA COMÚN </strong></h4>
+                </div>
+                <div class="modal-body">
+
+                    <div class="contact-main-wrapper">
+                        <form class="bg-w-form contact-form" method="post" autccomplete="off"
+                              id="FormActualizarOlla">
+                            <div class="row">
+
+                                <input value="" id="id" name="id" type="hidden">
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">NOMBRE DE ORGANIZACIÓN<span
+                                            class="highlight">*</span></label>
+                                    <input type="text" placeholder="Ingrese el nombre de la organización" id="or9"
+                                           name="or9"
+                                           data-content="Usted debe ingresar el nombre de la organización"
+                                           class="form-control form-input obligate" value="">
+                                </div>
+
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">DISTRITO <span
+                                            class="highlight">*</span></label>
+                                    <select class="form-control form-select obligate" id="or8" value=""
+                                            name="or8"
+                                            data-content="Usted debe seleccionar el estado.">
+                                        <option value="1251">CERCADO DE LIMA</option>
+                                        <option value="1252">ANCON</option>
+                                        <option value="1253">ATE</option>
+                                        <option value="1254">BARRANCO</option>
+                                        <option value="1255">BREÑA</option>
+                                        <option value="1256">CARABAYLLO</option>
+                                        <option value="1257">CHACLACAYO</option>
+                                        <option value="1258">CHORRILLOS</option>
+                                        <option value="1259">CIENEGUILLA</option>
+                                        <option value="1260">COMAS</option>
+                                        <option value="1261">EL AGUSTINO</option>
+                                        <option value="1262">INDEPENDENCIA</option>
+                                        <option value="1263">JESUS MARIA</option>
+                                        <option value="1264">LA MOLINA</option>
+                                        <option value="1265">LA VICTORIA</option>
+                                        <option value="1266">LINCE</option>
+                                        <option value="1267">LOS OLIVOS</option>
+                                        <option value="1268">LURIGANCHO</option>
+                                        <option value="1269">LURIN</option>
+                                        <option value="1270">MAGDALENA DEL MAR</option>
+                                        <option value="1271">MAGDALENA VIEJA</option>
+                                        <option value="1272">MIRAFLORES</option>
+                                        <option value="1273">PACHACAMAC</option>
+                                        <option value="1274">PUCUSANA</option>
+                                        <option value="1275">PUENTE PIEDRA</option>
+                                        <option value="1276">PUNTA HERMOSA</option>
+                                        <option value="1277">PUNTA NEGRA</option>
+                                        <option value="1278">RIMAC</option>
+                                        <option value="1279">SAN BARTOLO</option>
+                                        <option value="1280">SAN BORJA</option>
+                                        <option value="1281">SAN ISIDRO</option>
+                                        <option value="1282">SAN JUAN DE LURIGANCHO</option>
+                                        <option value="1283">SAN JUAN DE MIRAFLORES</option>
+                                        <option value="1284">SAN LUIS</option>
+                                        <option value="1285">SAN MARTIN DE PORRES</option>
+                                        <option value="1286">SAN MIGUEL</option>
+                                        <option value="1287">SANTA ANITA</option>
+                                        <option value="1288">SANTA MARIA DEL MAR</option>
+                                        <option value="1289">SANTA ROSA</option>
+                                        <option value="1290">SANTIAGO DE SURCO</option>
+                                        <option value="1291">SURQUILLO</option>
+                                        <option value="1292">VILLA EL SALVADOR</option>
+                                        <option value="1293">VILLA MARIA DEL TRIUNFO</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label ">NOMBRE DE CONTACTO</label>
+                                    <input type="text" placeholder="" id="or1" name="or1"
+                                           class="form-control form-input obligate"
+                                           data-content="Usted debe ingresar el nombre del contacto." value="">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">CELULAR DE CONTACTO</label>
+                                    <input type="number" placeholder="" id="or4" name="or4"
+                                           class="form-control form-input obligate"
+                                           value="" data-content="Usted debe ingresar el celular del contacto.">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="control-label form-label">Estado<span
+                                            class="highlight">*</span>
+                                    </label>
+                                    <select class="form-control form-select obligate" id="estado" value=""
+                                            name="estado"
+                                            data-content="Usted debe seleccionar el estado.">
+                                        <option value="1">Activado</option>
+                                        <option value="2">Desactivado</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12" style="height: 400px;">
+                                    <label class="control-label form-label">GEOLOCALIZACIÓN <span
+                                            class="highlight">*</span>
+                                    </label>
+                                    <div id="map2"></div>
+                                </div>
+
+                                <input id="longitud_editar" class="obligate" name="longitud_editar" type="hidden"
+                                       data-content="Usted debe ubicar el comedor en el mapa."/>
+                                <input id="latitud_editar" class="obligate" name="latitud_editar" type="hidden"
+                                       data-content="Usted debe ubicar el comedor en el mapa."/>
+
+                            </div>
+
+                            <div class="msg"></div>
+
+                            <div class="contact-submit">
+                                <button type="button" id="ActualizarOlla" class="btn btn-success">
+                                    <span>
+                                        ACTUALIZAR INFORMACIÓN
+                                    </span>
+                                </button>
+                            </div>
+
+                            {{ csrf.field | raw }}
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="myModalInformation" tabindex="-1" role="dialog" aria-labelledby="myModalInformation">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header mod">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true" style="color:#fff;">&times;</span></button>
+                    <h4 class="modal-title modtitle" id="myModalInformation">[ INFORMACIÓN ] </h4>
+                </div>
+                <div class="modal-body">
+                    cargando contenido...espere un momento por favor
+                </div>
+                <div class="msg"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var base_url = window.location.origin;
+        var d = new Date();
+        var month = d.getMonth() + 1;
+        var day = d.getDate();
+        var output = (day < 10 ? '0' : '') + day + '-' + (month < 10 ? '0' : '') + month + '-' + d.getFullYear();
+
+        $("#periodo").val(output);
+
+
+        !function (a) {
+            "use strict";
+
+            a(function () {
+                var b = a(window),
+                        c = a(document.body),
+                        mensaje = '',
+                        tipo = '',
+                        codigo = '';
+
+
+                a("#EditarOlla").on("show.bs.modal", function (b) {
+
+                    var c = a(b.relatedTarget),
+                            codigo = c.data("codigo"),
+                            e = a(this);
+
+                    e.find(".modal-title").text("HISTORIAL");
+
+                    return $.ajax({
+                        type: "get",
+                        url: '{{ base_url() }}/editar',
+                        data: {
+                            codigo: codigo
+                        },
+                        beforeSend: function () {
+                            e.find(".modal-title").text("EDITAR ORGANIZACIÓN");
+                        },
+                        success: function (data) {
+                            $.each(data, function (i, item) {
+                                $('#id').val(item.id),
+                                        $('#or9').val(item.or9);
+                                $('#or8').val(item.or8);
+                                $('#or1').val(item.or1);
+                                $('#or4').val(item.or4);
+                                $('#zona').val(item.zona);
+                                $('#aahh').val(item.aahh);
+                                $('#estado').val(item.estado);
+                                $('#latitud_editar').val(item.or26);
+                                $('#longitud_editar').val(item.or25);
+                                coords = {
+                                    lng2: item.or25,
+                                    lat2: item.or26,
+                                };
+                                editMapa(coords);
+                            });
+                        },
+                        error: function () {
+                        }
+                    });
+
+                });
+            })
+        }
+
+        (jQuery), function () {
+            "use strict";
+            $('#fono').keyup(function () {
+                this.value = (this.value + '').replace(/[^0-9]/g, '');
+            });
+
+        }();
+
+
+        initMap();
+
+        var marker;
+        var coords = {};
+
+        function initMap() {
+            coords = {
+                lng: -77.03146290121919,
+                lat: -12.045291343726586,
+                lng2: -77.03146290121919,
+                lat2: -12.045291343726586,
+            };
+            setMapa(coords);
+        }
+
+        function setMapa(coords) {
+
+            var map = new google.maps.Map(document.getElementById('map'),
+                    {
+                        zoom: 17,
+                        center: new google.maps.LatLng(coords.lat, coords.lng),
+                    });
+
+
+            var src = "http://ruoslima.com/public/mapas/limites.kmz";
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map
+            });
+
+            marker = new google.maps.Marker({
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat, coords.lng),
+            });
+
+            //--------------------------------------------------------------
+            var map2 = new google.maps.Map(document.getElementById('map2'),
+                    {
+                        zoom: 14,
+                        center: new google.maps.LatLng(coords.lat2, coords.lng2),
+                        styles: [{
+                                elementType: 'labels.icon',
+                                stylers: [{visibility: 'off'}]
+                            }]
+                    });
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map2
+            });
+
+            marker2 = new google.maps.Marker({
+                map: map2,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat2, coords.lng2),
+            });
+            //--------------------------------------------------------------
+
+            marker.addListener('click', toggleBounce);
+            marker2.addListener('click', toggleBounce);
+
+            marker.addListener('dragend', function (event) {
+                $('#longitud').val(this.getPosition().lng());
+                $('#latitud').val(this.getPosition().lat());
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+            marker2.addListener('dragend', function (event) {
+                $('#longitud').val(this.getPosition().lng());
+                $('#latitud').val(this.getPosition().lat());
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+
+        }
+
+
+        function editMapa(coords) {
+
+            var src = "http://ruoslima.com/public/mapas/limites.kmz";
+
+            //--------------------------------------------------------------
+            var map2 = new google.maps.Map(document.getElementById('map2'),
+                    {
+                        zoom: 7,
+                        center: new google.maps.LatLng(coords.lat2, coords.lng2),
+                        styles: [{
+                                elementType: 'labels.icon',
+                                stylers: [{visibility: 'off'}]
+                            }]
+                    });
+
+            var kmlLayer = new google.maps.KmlLayer(src, {
+                suppressInfoWindows: true,
+                preserveViewport: true,
+                map: map2
+            });
+
+            marker2 = new google.maps.Marker({
+                map: map2,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                position: new google.maps.LatLng(coords.lat2, coords.lng2),
+            });
+            //--------------------------------------------------------------
+
+            marker2.addListener('click', toggleBounce);
+
+            marker2.addListener('dragend', function (event) {
+                $('#longitud_editar').val(this.getPosition().lng());
+                $('#latitud_editar').val(this.getPosition().lat());
+            });
+
+        }
+
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+
+
+            if (marker2.getAnimation() !== null) {
+                marker2.setAnimation(null);
+            } else {
+                marker2.setAnimation(google.maps.Animation.BOUNCE);
+            }
+
+
+        }
+
+        $(document).on('show.bs.modal', '.modal', function (event) {
+            var zIndex = 1040 + (10 * $('.modal:visible').length);
+            $(this).css('z-index', zIndex);
+            setTimeout(function () {
+                $('.modal-backdrop').not('.modal-stack').css('z-index', zIndex - 1).addClass('modal-stack');
+            }, 0);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+        function estado() {
+        }
+
+        $('.searchRes').click(function () {
+            cod_nombre = $('.obj_nombre').val();
+            cod_tipo = $('.obj_tipo').val();
+            cod_incidencia = $('.obj_incidencia').val();
+            cod_distrito = $('.obj_distrito').val();
+            cod_manco = $('.obj_manco').val();
+            cod_linea = $('.obj_linea').val();
+            cod_publico = $('.obj_publico').val();
+
+            ListarOrganizaciones(cod_nombre, cod_tipo, cod_incidencia, cod_distrito, cod_manco, cod_linea, cod_publico);
+        })
+
+
+        $(document).ready(function () {
+            ListarOrganizaciones();
+        })
+
+        function format(d) {
+            return '<div class="col-md-8"><div class="col-md-12"><p style="float: left;"><strong>Nombre de organización: </strong> ' + d.or9 + '</p><br></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Acrónimo de organización: </strong>' + d.or10 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Descripción de organización: </strong>' + d.or11 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Tipo de organización: </strong>' + d.or12 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Líneas temáticas: </strong>' + d.or13 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Distritos de incidencia: </strong>' + d.or15 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Nivel de incidencia: </strong>' + d.or14 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Fecha de fundación: </strong>' + d.or16 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Número de contacto: </strong>' + d.or17 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Red social: </strong>' + d.or18 + '</p></div>' +
+                    '<div class="col-md-12"><p style="float: left;"><strong>Correo: </strong>' + d.or19 + '</p></div></div>';
+        }
+
+        var childRows = null;
+
+        function ListarOrganizaciones(cod_nombre, cod_tipo, cod_incidencia, cod_distrito, cod_manco, cod_linea, cod_publico) {
+
+            responsive: true
+
+
+            var dt = $('#Organizaciones').DataTable({
+
+                destroy: true,
+                "language": {
+                    "lengthMenu": "Ver _MENU_ registros por página",
+                    "zeroRecords": "No se encontraron resultados",
+                    "info": "Viendo página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No se encontraron responsables",
+                    "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                    "search": "Buscar:",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Último",
+                        "next": "Siguiente",
+                        "previous": "Anterior"
+                    },
+                },
+
+                "ajax": {
+                    "type": "get",
+                        "url": "{{ base_url() }}/organizaciones/lista",
+                    "data": {
+                        nombre: cod_nombre,
+                        tipo: cod_tipo,
+                        distrito: cod_distrito,
+                        incidencia: cod_incidencia,
+                        manco: cod_manco,
+                        linea: cod_linea,
+                        publico: cod_publico
+                    }
+                },
+
+                "columns": [
+                    {
+                        "class": "details-control",
+                        "orderable": false,
+                        "data": null,
+                        "defaultContent": ""
+                    },
+                    {"data": "or9"},
+                    {"data": "or11"},
+                    {"data": "or12"},
+                    {"data": "or13"},
+                    {"data": "or14"},
+                    {"data": "or18",
+                        render: function (data) {
+                            return "<a class='btn btn-default' target='blank_'" +
+                                "style='cursor:pointer;overflow: visible;'" +
+                                "href='" + data + "'>" +
+                                "<i class='fa fa-link'></i></a>"
+                        }
+                    },
+                ],
+
+                columnDefs: [
+                    {
+                        className: 'text-center',
+                        targets: [0, 1, 2, 3, 4, 5, 6 ],
+                    },
+                      {
+                        width: "5%",
+                        targets: [0]
+                    },
+                    {
+                        width: "7%",
+                        targets: [1,6]
+                    },
+                    {
+                        width: "20%",
+                        targets: [2,3,4,5]
+                    },
+                ]
+            });
+
+
+            // Array to track the ids of the details displayed rows
+            var detailRows = [];
+
+            $('#Organizaciones tbody').off('click', 'tr td.details-control');
+            $('#Organizaciones tbody').on('click', 'tr td.details-control', function () {
+                var tr = $(this).closest('tr');
+                var row = dt.row(tr);
+
+                if (row.child.isShown()) {
+                    // This row is already open - close it
+                    row.child.hide();
+                    tr.removeClass('shown');
+                } else {
+                    // Open this row
+                    d = row.data();
+                    row.child(format(d)).show();
+                    tr.addClass('shown');
+                }
+            });
+
+
+            // On each draw, loop over the `detailRows` array and show any child rows
+            dt.on('draw', function () {
+
+                // If reloading table then show previously shown rows
+                if (childRows) {
+
+                    childRows.every(function (rowIdx, tableLoop, rowLoop) {
+                        d = this.data();
+                        this.child($(format(d))).show();
+                        this.nodes().to$().addClass('shown');
+                    });
+
+                    // Reset childRows so loop is not executed each draw
+                    childRows = null;
+                }
+            });
+
+        }
+
+    </script>
+
+
+
+{% endblock content %}

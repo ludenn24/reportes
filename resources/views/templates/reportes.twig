@@ -1,0 +1,157 @@
+{% extends 'templates/app.twig' %}
+{% block content %}
+
+    <div id="load">
+    </div>
+
+
+    <div id="wrapper-content">
+        <div id="page-wrapper">
+            <div class="main-content">
+                <div class="content">
+
+                    <div class="section banner" id="fondo">
+                        <div class="container" >
+                            <div class="edu-feature-wrapper" >
+                                <div class="row">
+                                    <div class="col-md-12"><img src="{{ base_url() }}/images/pub.png" class="computer-image" alt=""/></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section section-padding courses-detail">
+                        <div class="container">
+
+                            <div class="section teacher-course">
+                                <div class="container teacher-course-wrapper">
+
+
+                                    <div class="register-table rlp-table">
+                                        <div class="course-syllabus-title underline">Reportes:</div>
+                                        <div class="course-table">
+                                            <div class="outer-container">
+                                                <div class="inner-container">
+                                                    <div class="table-header">
+                                                        <table class="edu-table-responsive">
+                                                            <thead>
+                                                                <tr class="heading-table">
+                                                                    <th class="col-2">Reportes mensuales</th>
+                                                                    <th class="col-2">Documentos</th>    
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                    <div class="table-body">
+                                                        <table class="edu-table-responsive table-hover">
+                                                            <tbody>
+                                                                {% for lista in EntradaController.listaReportes %}     
+                                                                <tr class="table-row">
+                                                                    <td class="col-4"><i class="w20 fa fa-file"></i> <span>{{ lista.titulo }} </span></td>
+                                                                    <td class="green-color col-4"><a download class="btn btn-primary" href="{{ base_url() }}/{{ lista.foto }}"><i class="w27 fa fa-download"></i>Descarga el documento aquí</a></td>
+                                                                </tr>
+                                                                {% endfor %}  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </br>
+
+                                        <div class="course-des-content">
+                                            <p>En esta sección podrás encontrar datos estadísticos mensuales sobre la realidad de las organizaciones juveniles que pertenecen a la Red Metropolitana para Organizaciones Juveniles.
+                                                </br>  ¡Conoce más sobre la participación juvenil en Lima con nosotros!
+                                            </p>
+                                        </div>
+                                        
+                                    </div>
+
+                                    <div class="register-table rlp-table">
+                                        <div class="course-syllabus-title underline">Documentos de análisis</div>
+
+                                        <div class="course-table">
+                                            <div class="outer-container">
+                                                <div class="inner-container">
+                                                    <div class="table-header">
+                                                        <table class="edu-table-responsive">
+                                                            <thead>
+                                                                <tr class="heading-table">
+                                                                    <th class="col-2">Documentos de análisis</th>
+                                                                    <th class="col-2">Descargar</th>    
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                    <div class="table-body">
+                                                        <table class="edu-table-responsive table-hover">
+                                                            <tbody>
+                                                                {% for lista in EntradaController.listaDocumentos %}     
+                                                                <tr class="table-row">
+                                                                    <td class="col-4"><i class="w20 fa fa-file"></i> <span>{{ lista.titulo }} </span></td>
+                                                                    <td class="green-color col-4"><a download class="btn btn-primary" href="{{ base_url() }}/{{ lista.foto }}"><i class="w27 fa fa-download"></i>Descarga el documento aquí</a></td>
+                                                                </tr>
+                                                                {% endfor %}  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <div class="course-des-content">
+                                            <p>En esta sección podrás encontrar compendios, investigaciones y ensayos elaborados por la Subgerencia de la Juventud en conjunto con instituciones aliadas sobre la realidad de las organizaciones juveniles de Lima Metropolitana.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="register-table rlp-table">
+                                        <div class="course-syllabus-title underline">Datos abiertos</div>
+
+                                        <div class="course-table">
+                                            <div class="outer-container">
+                                                <div class="inner-container">
+                                                    <div class="table-header">
+                                                        <table class="edu-table-responsive">
+                                                            <thead>
+                                                                <tr class="heading-table">
+                                                                    <th class="col-2">Datos abiertos</th>
+                                                                    <th class="col-2">Descargar</th>    
+                                                                </tr>
+                                                            </thead>
+                                                        </table>
+                                                    </div>
+                                                    <div class="table-body">
+                                                        <table class="edu-table-responsive table-hover">
+                                                               <tbody>
+                                                                {% for lista in EntradaController.listaDatos %}     
+                                                                <tr class="table-row">
+                                                                    <td class="col-4"><i class="w20 fa fa-file"></i> <span>{{ lista.titulo }} </span></td>
+                                                                    <td class="green-color col-4"><a download class="btn btn-primary" href="{{ base_url() }}/{{ lista.foto }}"><i class="w27 fa fa-download"></i>Descarga el documento aquí</a></td>
+                                                                </tr>
+                                                                {% endfor %}  
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <br>
+
+                                        <div class="course-des-content">
+                                            <p>En esta sección podrás encontrar, en formato descargable, la base total de datos de las diferentes organizaciones juveniles de Lima que se encuentran inscritas en la Red Metropolitana de Organizaciones Juveniles. 
+                                                </br>De esta manera, toda la comunidad de Lima podrá conocer y utilizar información pública de las organizaciones juveniles para el desarrollo de investigaciones, publicaciones o propuestas en favor de su comunidad.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,414 @@
+{% extends 'admin/templates/app.twig' %}
+{% block content %}
+
+    <style>
+        #map {
+            margin: 0;
+            padding: 0;
+            height: 600px;
+            max-width: none;
+        }
+
+        #iw-container .iw-title {
+            font-size: 16px;
+            font-weight: 400;
+            padding: 10px;
+            background-color: #004783;
+            color: white;
+            margin: 0;
+            border-radius: 2px 2px 0 0;
+        }
+    </style>
+
+    <body class="hold-transition sidebar-mini layout-fixed  ">
+        <div class="pace  pace-inactive">
+            <div class="pace-progress">
+                <div class="pace-progress-inner"></div>
+            </div>
+            <div class="pace-activity"></div>
+        </div>
+
+        <div class="wrapper">
+            {% include 'admin/templates/head.twig' %}
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                {% include 'admin/templates/menu.twig' %}
+            </aside>    
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <div class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-6">
+                                <h1 class="m-0">Migrantes</h1>
+                            </div><!-- /.col -->
+                            <div class="col-sm-6">
+                                <ol class="breadcrumb float-sm-right">
+                                    <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                                    <li class="breadcrumb-item active">Migrantes</li>
+                                </ol>
+                            </div><!-- /.col -->
+                        </div><!-- /.row -->
+                    </div><!-- /.container-fluid -->
+                </div>
+                <!-- /.content-header -->
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="container-fluid">
+                        <!-- Small boxes (Stat box) -->
+                        <div class="row">
+
+                            <div class="col-lg-3">
+                                <div class="row">
+
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-lime">
+                                            <div class="inner">
+                                                <h3>290</h3>
+                                                <p>Empadronamientos</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-cyan">
+                                            <div class="inner">
+                                                <h3>222</h3>
+                                                <p>Ollas comunes</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-gray">
+                                            <div class="inner">
+                                                <h3>35</h3>
+                                                <p>Programa Soy Líder</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-maroon">
+                                            <div class="inner">
+                                                <h3>15</h3>
+                                                <p>Zonas de concentración de población migrantes</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-blue">
+                                            <div class="inner">
+                                                <h3>10</h3>
+                                                <p>Contacto Joven</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-olive">
+                                            <div class="inner">
+                                                <h3>6</h3>
+                                                <p>Club de campeonas y campeones del cambio</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-dark">
+                                            <div class="inner">
+                                                <h3>3</h3>
+                                                <p>Registro Único de Organizaciones Sociales</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-lightblue">
+                                            <div class="inner">
+                                                <h3>1</h3>
+                                                <p>Asistencia técnica a OJ del CMPJ</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- ./col -->
+                                    <!-- ./col -->
+                                    <div class="col-lg-6 col-6">
+                                        <!-- small box -->
+                                        <div class="small-box bg-gradient-navy">
+                                            <div class="inner">
+                                                <h3>1</h3>
+                                                <p>Expresarte Joven</p>
+                                            </div>
+                                            <div class="icon">
+                                                <i class="fa fa-users"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Left col -->
+                            <section class="col-lg-6 connectedSortable">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">
+                                            <i class="fas fa-chart-pie mr-1"></i>
+                                            Geolocalización
+                                        </h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="tab-content p-0">
+                                            <div class="chart tab-pane active" id="revenue-chart"
+                                                 style="position: relative; height: 600px;">
+                                                <div id="map"></div>
+                                                    <div id="legend">
+                                                    <img src="{{base_url()}}/dist/img/leyenda.png">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- /.card -->
+                            </section>
+
+                            <div class="col-lg-3">
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-warning">
+                                        <div class="inner">
+                                            <h3>27,753</h3>
+                                            <p>Población migrante de Venezuela estimada (Fuente: Consejo Local de Residentes de la Embajada de la República Bolivariana de Venezuela ante el Perú) </p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-lightblue">
+                                        <div class="inner">
+                                            <h3>4,760</h3>
+                                            <p>Población Censada (Fuente: Consejo Local de Residentes de la Embajada de la República Bolivariana de Venezuela ante el Perú)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-info">
+                                        <div class="inner">
+                                            <h3>3,485</h3>
+                                            <p>Población que migró del extranjero (Fuente: Instituto Nacional de Estadística e Informática)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-plane"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-olive">
+                                        <div class="inner">
+                                            <h3>23,949</h3>
+                                            <p>Permisos Temporales de Trabajo (Fuente: Migraciones)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-id-card"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-gray">
+                                        <div class="inner">
+                                            <h3>4,594</h3>
+                                            <p>Cantidad de pruebas COVID realizadas (Fuente: Ministerio de Salud)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-medkit"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                                <!-- ./col -->
+                                <div class="col-lg-12 col-6">
+                                    <!-- small box -->
+                                    <div class="small-box bg-gradient-dark">
+                                        <div class="inner">
+                                            <h3>47</h3>
+                                            <p>Cantidad de personas fallecidas (Fuente: SINADEF)</p>
+                                        </div>
+                                        <div class="icon">
+                                            <i class="fa fa-user-injured"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ./col -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <!-- Main row -->
+                        <div class="row">
+                        </div>
+                        <!-- /.row (main row) -->
+                    </div><!-- /.container-fluid -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
+
+            
+            
+            <script>
+                listaUbicaciones();
+
+                function listaUbicaciones(distrito) {
+
+                    $.ajax({
+                        type: 'get',
+                        url: '{{base_url()}}/auth/geo/migrantes',
+                        beforeSend: function (e) {
+                        },
+                        success: function (data) {
+
+                            var ArrayContent = data.length;
+
+                            if (ArrayContent) {
+
+                                var bounds = new google.maps.LatLngBounds();
+                                var mapOptions = {
+                                    mapTypeId: 'roadmap'
+                                };
+                                map = new google.maps.Map(document.getElementById('map'), {
+                                    mapOptions
+                                });
+
+                                map.setTilt(50);
+                                var mostrarMarcadores = new google.maps.InfoWindow(),
+                                        data, i;
+
+                                $.each(data, function (i, item) {
+                                    var position = new google.maps.LatLng(item.latitud, item.longitud);
+                                    bounds.extend(position);
+
+                                    if (item.programa_id == 1) {
+                                        var img_icono = "{{ base_url() }}/dist/img/olla.png";
+                                    } else if (item.programa_id == 2) {
+                                        var img_icono = "{{ base_url() }}/dist/img/emp.png";
+                                    } else if (item.programa_id == 3) {
+                                       var img_icono = "{{ base_url() }}/dist/img/ruos.png";
+                                    } else {
+                                        var img_icono = "{{ base_url() }}/dist/img/conc.png";
+                                    }
+
+                                    marker = new google.maps.Marker({
+                                        position: position,
+                                        map: map,
+                                        title: item.nombre,
+                                        icon: img_icono
+                                    });
+                                    var c = '<div id="iw-container">' +
+                                            '<div class="iw-title">' + item.nombre + '</div>' +
+                                            '<div class="iw-content">' +
+                                            '<table class="table table-sm">' +
+                                            '<tbody><tr>' +
+                                            '<th><b>Descripción:</b> </th>' +
+                                            '<td>' + item.descripcion_actividad + '<br></td>' +
+                                            '</tr>' +
+                                            '<tr>' +
+                                            '</tr>' +
+                                            '</tbody>' +
+                                            '</table>' +
+                                            '</div>';
+
+
+                                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                                        return function () {
+                                            mostrarMarcadores.setContent(c);
+                                            mostrarMarcadores.open(map, marker);
+                                        }
+                                    })(marker, i));
+                                    map.fitBounds(bounds);
+                                });
+
+                                var src = "{{ base_url() }}/dist/mapa/sectores.kmz";
+
+                                var kmlLayer = new google.maps.KmlLayer(src, {
+                                    suppressInfoWindows: true,
+                                    preserveViewport: true,
+                                    map: map
+                                });
+                                // Aplicamos el evento 'bounds_changed' que detecta cambios en la ventana del Mapa de Google, también le configramos un zoom de 14
+                                var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function (event) {
+                                    this.setZoom(13);
+                                    google.maps.event.removeListener(boundsListener);
+                                });
+                                
+                                map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+
+                            } else {
+                                Swal.fire({
+                                    title: 'Mensaje',
+                                    text: 'No se registran ollas comunes en este distrito',
+                                    icon: 'info',
+                                    confirmButtonText: 'Ok'
+                                })
+                            }
+                        },
+                        error: function () {
+                        }
+                    });
+                }
+            </script>
+        {% endblock content %}

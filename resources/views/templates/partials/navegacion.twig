@@ -1,0 +1,38 @@
+<header>
+
+
+    <div class="header-main homepage-01">
+        <div class="container">
+            <div class="header-main-wrapper">
+                <div class="navbar-heade">
+                    <div class="logo pull-left"><a href="{{ path_for('home') }}" class="header-logo"><img
+                                src="{{ base_url() }}/images/logo.png" alt=""/></a></div>
+                    <button type="button" data-toggle="collapse" data-target=".navigation" class="navbar-toggle edugate-navbar">
+                        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                </div>
+                <nav class="navigation collapse navbar-collapse pull-right">
+                    <ul class="nav-links nav navbar-nav">
+
+                        <li><a href="{{ path_for('home') }}" class="main-menu">Inicio </a></li>
+                        <li class="dropdown"><a class="main-menu">Organizaciones<span class="fa fa-angle-down icons-dropdown"></span></a>
+                            <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                <li><a href="{{ path_for('formulario') }}" class="link-page">Inscribe tu organización</a></li>
+                                <li><a href="{{ path_for('busca') }}" class="link-page">Consulta</a></li>
+                                <li><a href="{{ path_for('home') }}" class="link-page">Mapa georreferenciado</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ path_for('reportes') }}" class="main-menu">Publicaciones</a></li>
+                        <li class="dropdown"><a class="main-menu">Lo último <span class="fa fa-angle-down icons-dropdown"></span></a>
+                                 <ul class="dropdown-menu edugate-dropdown-menu-1">
+                                 <li><a href="{{ path_for('videos') }}" class="link-page">Videos</a></li>
+                                <li><a href="{{ path_for('noticias') }}" class="link-page">Noticias</a></li>
+                                <li><a href="{{ path_for('novedades') }}" class="link-page">Novedades</a></li>
+                                <li><a href="{{ path_for('nuevas') }}" class="link-page">Nuevas organizaciones</a></li>
+                            </ul>
+                        </li>       
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>

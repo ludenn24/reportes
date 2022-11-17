@@ -1,0 +1,52 @@
+
+
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="../../index2.html"><b>Reportes</b> GPV</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Inicio de sesión</p>
+                <div class="msg"></div>
+                
+                <form action="{{ path_for('auth.signin') }}" method="post">
+                    
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Usuario">
+                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="input-group mb-3">
+                        <input type="password" class="form-control" id="clave" name="clave" placeholder="Contraseña">
+                         <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% include 'templates/partials/flash.twig' %}
+
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-12">
+                            <button type="submit" id="btn_submit" class="btn btn-primary btn-block  ">Ingresar</button>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+
+
+                    {{ csrf.field | raw }}
+
+
+                </form>
+            </div>
+            <p class="login-box-msg" style="text-align:right;color: #fff;padding-top:10px;">v1.0</p>
+            <!-- /.login-box-body -->
+        </div>

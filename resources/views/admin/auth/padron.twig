@@ -1,0 +1,244 @@
+{% extends 'admin/templates/app.twig' %}
+{% block content %}
+    
+    <body class="hold-transition skin-blue sidebar-mini ">
+        <div class="pace  pace-inactive">
+            <div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+                <div class="pace-progress-inner"></div>
+            </div>
+            <div class="pace-activity"></div>
+        </div>
+        <div class="wrapper">
+
+            {% include 'admin/templates/head.twig' %}
+
+            <aside class="main-sidebar sidebar-dark-primary elevation-4">
+                {% include 'admin/templates/menu.twig' %}
+            </aside>
+
+            <div class="content-wrapper">
+
+                <section class="content-header">
+                    <div class="container-fluid">
+                        <div class="row mb-2">
+                            <div class="col-sm-12">
+                                <h1>Relación de Electores del Distrito de Cercado de Lima, Provincia de Lima, Departamento de Lima, 2021</h1>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-12">
+
+                            <div class="card card-primary">
+                                <div class="card-header">
+                                    <h3 class="card-title">BÚSQUEDA DE ELECTORES</h3>
+                                </div>
+
+                                    <div class="card-body">
+                                        <div class="form-group">
+                                            <label for="lblnombres">DNI</label>
+                                            <input type="text" class="form-control" id="dni"  name="dni"  disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lblnombres">Nombres</label>
+                                            <input type="text" class="form-control" id="nombre"  name="nombre" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lbllast">Apellidos</label>
+                                            <input type="text" class="form-control" id="apellidos" name="apellidos" disabled>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lblvoto">¿Votó?</label>
+                                            <input type="text" class="form-control" id="voto" name="voto" disabled>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="lblestado">Número de DNI</label>
+                                            <input type="text" class="form-control" maxlength="8"  id="dnibusqueda" name="dnibusqueda">
+                                        </div>
+                                    </div>
+
+                                    <div class="card-footer">
+                                        <button class="btn btn-primary busqueda " onclick="Buscar()" disabled>Buscar</button>
+                                    </div>
+
+                            </div>
+
+
+                            <div class="card">
+                                <div class="card-body table-responsive">
+                                       <table id='empTable'  class="table table-bordered table-sm">
+                                        <thead>
+                                          <tr>
+                                            <td>DNI</td>
+                                            <td>¿Votó?</td>
+                                            <td>Registrar voto</td>
+                                            <td>Apellido Paterno</td>
+                                            <td>Apellido Materno</td>
+                                            <td>Nombre</td>
+                                            <td>Departamento</td>
+                                            <td>Provincia</td>
+                                            <td>Distrito</td>
+                                          </tr>
+                                        </thead>
+                                      </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+           
+                <script type="text/javascript">
+
+                    $("#dnibusqueda").on("input", function(event){
+                        $('.busqueda').prop('disabled', true);
+                        if($(this).val().length == 8){
+                            $('.busqueda').prop('disabled', false);
+                        }
+                    });
+
+                    function Buscar() {
+                        var codigo = document.getElementById("dnibusqueda").value;
+                        return $.ajax({
+                            type: "get",
+                            url: "{{ base_url() }}/auth/padron/buscar",
+                            data: {
+                                codigo: codigo
+                            },
+                            beforeSend: function() {
+                                $('.busqueda').prop('disabled', true);
+                                Swal.fire({
+                                    title: "Buscando...",
+                                    html: "Espere un momento"
+                                });
+                                Swal.showLoading();
+                            },
+                            success: function (data) {
+                                if ($.isEmptyObject(data)) {
+                                    Swal.fire({
+                                        icon: 'warning',
+                                        title: '¡Atención!',
+                                        text: 'El número de DNI ingresado no se encuentra en el padrón',
+                                    });
+                                }  else {
+                                    swal.close();
+                                    $.each(data, function (i, item) {
+                                        $('#dni').val(item.dni);
+                                        $('#nombre').val(item.nombres);
+                                        $('#apellidos').val(item.apepat+" "+item.apemat);
+                                    });
+                                }
+                                $('.busqueda').prop('disabled', false);
+                            },
+                            error: function () {
+                            }
+                        });
+
+                    }
+
+
+                    $(document).ready(function(){
+                      $('#empTable').DataTable({
+                        responsive: true,
+                         processing: true,
+                         serverSide: true,
+                        language: {
+                            "lengthMenu": "Ver _MENU_ registros por página",
+                            "zeroRecords": "No se encontraron resultados",
+                            "info": "Viendo página _PAGE_ de _PAGES_",
+                            "infoEmpty": "No se encontraron electores",
+                            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                            "search": "Buscar:",
+                            "paginate": {
+                                "first": "Primero",
+                                "last": "Último",
+                                "next": "Siguiente",
+                                "previous": "Anterior"
+                            },
+                        },
+                         ajax: "{{ base_url() }}/auth/padron/lista",
+                         columns: [
+                            { data: 'dni' },
+                            { data: 'voto' },
+                            {
+                                "data": "codigo",
+                                render: function (data) {
+                                    return "<a class='btn btn-default'" +
+                                            "style='cursor:pointer;overflow: visible;'" +
+                                            "onclick='ValidarVoto(" + data + ")'" +
+                                            "data-toggle='modal'" +
+                                            "data-content=''>" +
+                                            "<i class='fa fa-gavel'></i></a>"
+
+                                },
+                            },
+                            { data: 'apepat' },
+                            { data: 'apemat' },
+                            { data: 'nombres' },
+                            { data: 'departamento' },
+                            { data: 'provincia' },
+                            { data: 'distrito' },
+                         ]
+                      });
+
+                    });
+                    
+                function GuardarVoto(codigo) {
+                    var resultado = "";
+                    $.ajax({
+                        url: "{{ base_url() }}/auth/voto/registrar",
+                        async: false,
+                        type: 'get',    
+                        data: { codigo: codigo},
+                        dataType: 'json',
+                        success: function (datos) {
+                            resultado = datos.response;
+                            mensaje = datos.message;
+                        }
+                    });
+                    return [resultado, mensaje];
+                }
+                
+                function ValidarVoto(codigo) {
+                    var codigo = codigo;
+                
+                    Swal.fire({
+                        title: '¿El elector votó?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'SI',
+                        cancelButtonText: 'NO'
+                    }).then((result) => {
+                        if (result.value) {
+                            var resp = GuardarVoto(codigo);
+                            if (resp[0] == "success") {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: '¡Éxito!',
+                                    text: resp[1],
+                                }).then((result) => {
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: '¡Error!',
+                                    text: resp[1],
+                                })
+                            }
+                        }
+                    })
+                }
+                </script>
+    
+        {% endblock content %}
