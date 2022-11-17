@@ -44,6 +44,7 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="lblnombres">DNI</label>
+                                            <input type="hidden" class="form-control" id="codigo_user"  name="codigo_user"  disabled>
                                             <input type="text" class="form-control" id="dni"  name="dni"  disabled>
                                         </div>
                                         <div class="form-group">
@@ -66,7 +67,8 @@
                                     </div>
 
                                     <div class="card-footer">
-                                        <button class="btn btn-primary busqueda " onclick="Buscar()" disabled>Buscar</button>
+                                        <button class="btn btn-primary busqueda" onclick="Buscar()" disabled>Buscar</button>
+                                        <button class="btn btn-success float-right" onclick="ValidarVoto()">Registrar voto</button>
                                     </div>
 
                             </div>
@@ -131,7 +133,9 @@
                                 }  else {
                                     swal.close();
                                     $.each(data, function (i, item) {
+                                        $('#codigo_user').val(item.codigo);
                                         $('#dni').val(item.dni);
+                                        $('#voto').val(item.voto);
                                         $('#nombre').val(item.nombres);
                                         $('#apellidos').val(item.apepat+" "+item.apemat);
                                     });
@@ -207,37 +211,51 @@
                     return [resultado, mensaje];
                 }
                 
-                function ValidarVoto(codigo) {
-                    var codigo = codigo;
-                
-                    Swal.fire({
-                        title: '¿El elector votó?',
-                        icon: 'warning',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'SI',
-                        cancelButtonText: 'NO'
-                    }).then((result) => {
-                        if (result.value) {
-                            var resp = GuardarVoto(codigo);
-                            if (resp[0] == "success") {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: '¡Éxito!',
-                                    text: resp[1],
-                                }).then((result) => {
+                function ValidarVoto() {
+                    var codigo = document.getElementById("codigo_user").value;
+                    var voto = document.getElementById("voto").value;
+                    if (voto==='SI'){
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Atención',
+                            text: 'El elector ya participó en estas elecciones.',
+                        })
+                    } else if (!voto){
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Atención',
+                            text: 'Usted debe seleccionar un participante.',
+                        })
+                    } else{
+                        Swal.fire({
+                            title: '¿Esta seguro de registrar el voto?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'SI',
+                            cancelButtonText: 'NO'
+                        }).then((result) => {
+                            if (result.value) {
+                                var resp = GuardarVoto(codigo);
+                                if (resp[0] == "success") {
+                                    Swal.fire({
+                                        icon: 'success',
+                                        title: '¡Éxito!',
+                                        text: resp[1],
+                                    }).then((result) => {
 
-                                });
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: '¡Error!',
-                                    text: resp[1],
-                                })
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: '¡Error!',
+                                        text: resp[1],
+                                    })
+                                }
                             }
-                        }
-                    })
+                        })
+                    }
                 }
                 </script>
     
